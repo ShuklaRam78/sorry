@@ -24,7 +24,7 @@ body {
   padding: 1em;
 }
 .sorry-title {
-  font-size: clamp(2.5rem, 12vw, 8rem);
+  font-size: clamp(2rem, 10vw, 6rem);
   color: #e63946;
   margin-bottom: 0.3em;
   letter-spacing: 0.1em;
@@ -49,8 +49,8 @@ body {
   gap: 1.5em;
 }
 .yes-btn, .no-btn {
-  font-size: clamp(1.2rem, 4vw, 2.2rem);
-  padding: 0.8em 2em;
+  font-size: clamp(1rem, 3.5vw, 1.8rem);
+  padding: 0.7em 1.8em;
   border: none;
   border-radius: 3em;
   cursor: pointer;
