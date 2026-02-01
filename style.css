@@ -3,7 +3,7 @@ body {
   padding: 0;
   min-height: 100vh;
   background: #fff0f5;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 .hearts-container {
@@ -11,6 +11,7 @@ body {
   top: 0; left: 0; width: 100vw; height: 100vh;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
 .center-content {
   position: absolute;
@@ -18,32 +19,38 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
+  width: 90%;
+  max-width: 600px;
+  padding: 1em;
 }
 .sorry-title {
-  font-size: 8rem;
+  font-size: clamp(2.5rem, 12vw, 8rem);
   color: #e63946;
   margin-bottom: 0.3em;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-shadow: 3px 3px 12px #fff, 0 0 20px #e63946;
   animation: pulse 2s ease-in-out infinite;
+  word-break: break-word;
 }
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
 .forgive-text {
-  font-size: 3rem;
+  font-size: clamp(1.2rem, 5vw, 3rem);
   color: #222;
   margin-bottom: 1.5em;
 }
 .button-row {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 3em;
+  gap: 1.5em;
 }
 .yes-btn, .no-btn {
-  font-size: 2.2rem;
-  padding: 1em 3em;
+  font-size: clamp(1.2rem, 4vw, 2.2rem);
+  padding: 0.8em 2em;
   border: none;
   border-radius: 3em;
   cursor: pointer;
@@ -82,17 +89,18 @@ body {
   overflow: auto;
 }
 .navbar {
-  width: 100vw;
+  width: 100%;
   background: #e63946;
   color: #fff;
-  font-size: 2.5rem;
-  padding: 1em 0;
+  font-size: clamp(1.2rem, 5vw, 2.5rem);
+  padding: 0.8em 0.5em;
   text-align: center;
   letter-spacing: 0.1em;
   box-shadow: 0 2px 8px #e6394633;
   position: sticky;
   top: 0;
   z-index: 10;
+  box-sizing: border-box;
 }
 .music-player {
   background: linear-gradient(135deg, #e63946 0%, #ff6b7a 100%);
@@ -121,30 +129,33 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .apology-content {
-  margin: 3em auto 0 auto;
+  margin: 2em auto 0 auto;
   max-width: 700px;
+  width: 90%;
   background: #fff;
   border-radius: 1.5em;
   box-shadow: 0 2px 16px #e6394633;
-  padding: 2.5em 2em;
-  font-size: 1.5rem;
+  padding: 1.5em 1em;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   color: #222;
   line-height: 1.7;
   text-align: center;
   position: relative;
+  box-sizing: border-box;
 }
 /* Gallery Styles */
 .gallery {
   width: 100%;
   max-width: 1200px;
-  margin: 3em auto 4em auto;
-  padding: 0 2em;
+  margin: 2em auto 3em auto;
+  padding: 0 1em;
+  box-sizing: border-box;
 }
 .gallery-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   color: #e63946;
   text-align: center;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
   text-shadow: 2px 2px 8px #fff;
   font-style: italic;
 }
@@ -152,15 +163,16 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5em;
-  padding: 2em 0;
+  gap: 1.5em;
+  padding: 1em 0;
 }
 .polaroid {
   background: #fff;
-  padding: 15px 15px 50px 15px;
+  padding: 10px 10px 40px 10px;
   box-shadow: 0 6px 25px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.05);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   animation: floatIn 0.8s ease both;
+  max-width: 90vw;
 }
 .polaroid:nth-child(1) { animation-delay: 0.1s; }
 .polaroid:nth-child(2) { animation-delay: 0.2s; }
@@ -173,16 +185,16 @@ body {
 .polaroid:nth-child(9) { animation-delay: 0.9s; }
 .polaroid:nth-child(10) { animation-delay: 1.0s; }
 .polaroid img {
-  width: 280px;
-  height: 320px;
+  width: clamp(150px, 40vw, 280px);
+  height: clamp(180px, 50vw, 320px);
   object-fit: cover;
   display: block;
 }
 .polaroid span {
   display: block;
   text-align: center;
-  margin-top: 12px;
-  font-size: 1.1rem;
+  margin-top: 10px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   color: #e63946;
   font-family: 'Comic Sans MS', 'Segoe UI', cursive;
 }
@@ -207,13 +219,60 @@ body {
   }
 }
 
-@media (max-width: 600px) {
-  .sorry-title { font-size: 4rem; }
-  .forgive-text { font-size: 1.8rem; }
-  .yes-btn, .no-btn { font-size: 1.5rem; padding: 0.8em 2em; }
-  .apology-content { font-size: 1rem; padding: 1.2em 0.5em; }
-  .navbar { font-size: 1.2rem; }
-  .polaroid img { width: 200px; height: 240px; }
-  .gallery-title { font-size: 1.5rem; }
-  .polaroid { padding: 10px 10px 40px 10px; }
+/* Tablet */
+@media (max-width: 768px) {
+  .button-row {
+    gap: 1em;
+  }
+  .polaroid {
+    padding: 8px 8px 35px 8px;
+  }
+  .rotate-left, .rotate-right, .rotate-slight, .rotate-slight-neg, 
+  .rotate-left-more, .rotate-right-more {
+    transform: rotate(0deg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .sorry-title { 
+    font-size: 2.5rem; 
+    letter-spacing: 0.05em;
+  }
+  .forgive-text { 
+    font-size: 1.2rem; 
+  }
+  .yes-btn, .no-btn { 
+    font-size: 1.1rem; 
+    padding: 0.7em 1.5em; 
+  }
+  .button-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+  .apology-content { 
+    font-size: 1rem; 
+    padding: 1em 0.8em;
+    margin: 1em auto;
+  }
+  .navbar { 
+    font-size: 1.1rem; 
+    padding: 0.6em 0.3em;
+  }
+  .polaroid img { 
+    width: 70vw; 
+    height: 80vw;
+    max-width: 280px;
+    max-height: 320px;
+  }
+  .gallery-title { 
+    font-size: 1.3rem; 
+  }
+  .polaroid { 
+    padding: 8px 8px 30px 8px; 
+  }
+  .polaroid-grid {
+    gap: 1em;
+  }
 }
